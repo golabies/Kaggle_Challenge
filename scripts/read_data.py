@@ -39,4 +39,4 @@ if __name__ == '__main__':
     for i in read.wave_files:
         voice_out, fs_out = read.read_wave(i)
         read.play(voice_out[0], fs_out)
-        read.show(voice_out[0])
+        # read.show(voice_out[0])
