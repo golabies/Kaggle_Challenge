@@ -6,15 +6,16 @@ import matplotlib.pyplot as plt
 
 
 class ReadData:
-    def __init__(self, folder_name, address=''):
+    def __init__(self, folder_name='', address=''):
         if address == '':
             address = '/'.join(os.getcwd().split('/')[:-1])
-        os.chdir(address)
-        os.chdir(folder_name)
-        self.name = 'hello world'
-        self.folder_name = folder_name
-        self.voice = np.array([])
-        self.wave_files = [file for file in os.listdir(os.path.join(address, self.folder_name)) if '.wav' in file]
+        if folder_name != '':
+            os.chdir(address)
+            os.chdir(folder_name)
+            self.name = 'hello world'
+            self.folder_name = folder_name
+            self.voice = np.array([])
+            self.wave_files = [file for file in os.listdir(os.path.join(address, self.folder_name)) if '.wav' in file]
 
     @staticmethod
     def play(voice, fs):
@@ -35,8 +36,12 @@ class ReadData:
 
 
 if __name__ == '__main__':
-    read = ReadData('first_sample')
+    '''
+    read = ReadData('train_curated', address='data')
     for i in read.wave_files:
         voice_out, fs_out = read.read_wave(i)
         read.play(voice_out[0], fs_out)
         # read.show(voice_out[0])
+    '''
+    read = ReadData()
+    read.play(np.arange(0, 100000), 1000)

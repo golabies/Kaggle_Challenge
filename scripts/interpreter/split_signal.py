@@ -8,12 +8,8 @@ class Split:
         self.out = []
 
     def fill(self):
-        self.out: list
         for i in range(self.len, len(self.sig)):
-            temp = np.array(self.sig[i-self.len:i])
-            self.out.append(temp)
-        self.out = np.array(self.out)
-        return self.out
+            yield np.array(self.sig[i-self.len:i])
 
 
 if __name__ == '__main__':
